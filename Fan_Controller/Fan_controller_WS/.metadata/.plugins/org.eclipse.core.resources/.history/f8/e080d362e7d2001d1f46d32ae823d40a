@@ -1,0 +1,10 @@
+#include"gpio.h"
+#include"motor.h"
+
+void DcMotor_Init(void){
+	GPIO_setupPinDirection(MOTOR_IN1_PORT_ID, MOTOR_IN1_PIN_ID,PIN_OUTPUT);
+	GPIO_setupPinDirection(MOTOR_IN1_PORT_ID, MOTOR_IN1_PIN_ID,PIN_OUTPUT);
+
+	GPIO_writePin(MOTOR_IN1_PORT_ID, MOTOR_IN1_PIN_ID,LOGIC_LOW);
+	GPIO_writePin(MOTOR_IN1_PORT_ID, MOTOR_IN1_PIN_ID,LOGIC_LOW);
+}

@@ -1,0 +1,33 @@
+/******************************************************************************
+ *
+ * Module: DC Motor
+ *
+ * File Name: motor.c
+ *
+ * Description: source file for the DC Motor driver
+ *
+ * Author:  Seif-Allah Magdy
+ *
+ *******************************************************************************/
+
+#include"..\MCAL\gpio.h"
+#include"motor.h"
+#include"..\MCAL\pwm.h"
+#include<avr/io.h>
+
+void DcMotor_Init(void){
+	GPIO_setupPinDirection(MOTOR_IN1_PORT_ID, MOTOR_IN1_PIN_ID,PIN_OUTPUT);
+	GPIO_setupPinDirection(MOTOR_IN2_PORT_ID, MOTOR_IN2_PIN_ID,PIN_OUTPUT);
+
+	GPIO_writePin(MOTOR_IN1_PORT_ID, MOTOR_IN1_PIN_ID,LOGIC_LOW);
+	GPIO_writePin(MOTOR_IN2_PORT_ID, MOTOR_IN2_PIN_ID,LOGIC_LOW);
+}
+
+void DcMotor_Rotate(DcMotor_State state,uint8 speed){
+
+	PORTB|= state;
+	if(state == stop){
+		PORTB &= ~(1<<1) & ~(1<<0);
+	}
+	PWM_Timer0_Start(speed);
+}

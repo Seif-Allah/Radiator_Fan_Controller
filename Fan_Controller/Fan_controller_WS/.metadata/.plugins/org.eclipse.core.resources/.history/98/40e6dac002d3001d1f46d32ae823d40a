@@ -1,0 +1,82 @@
+#include"..\HAL\motor.h"
+#include"..\HAL\lcd.h"
+#include"..\HAL\lm35_sensor.h"
+int main(void){
+	uint8 temp;
+
+	ADC_ConfigType  ADC_Config = {INTERNAL,PRESCALLER_8};
+
+	DcMotor_Init();
+	LCD_init();
+	ADC_init(&ADC_Config);
+	LCD_moveCursor(0,3);
+	LCD_displayString("FAN Is ");
+	LCD_moveCursor(1,1);
+	LCD_displayString("Temp =    C");
+	while(1){
+		temp = LM35_getTemperature();
+
+		/* Display the temperature value every time at same position */
+
+
+		if(temp<30){
+			LCD_moveCursor(0,11);
+			LCD_displayString("OFF");
+			LCD_moveCursor(1,8);
+			LCD_intgerToString(temp);
+			DcMotor_Rotate(stop,0);
+			while(temp<30);
+		}
+		else if(temp>=30 && temp<60){
+			LCD_moveCursor(0,11);
+			LCD_displayString("ON");
+			LCD_moveCursor(0,13);
+			LCD_displayString(" ");
+			LCD_moveCursor(1,8);
+			LCD_intgerToString(temp);
+			DcMotor_Rotate(CW,25);
+		}
+		else if(temp>=60 && temp<90){
+			LCD_moveCursor(0,11);
+			LCD_displayString("ON");
+			LCD_moveCursor(1,8);
+			LCD_intgerToString(temp);
+			DcMotor_Rotate(CW,50);
+		}
+		else if(temp>=90 && temp<120){
+			LCD_moveCursor(0,11);
+			LCD_displayString("ON");
+			if(temp >= 100)
+			{
+				LCD_moveCursor(1,8);
+				LCD_intgerToString(temp);
+			}
+			else
+			{
+				LCD_moveCursor(1,8);
+				LCD_intgerToString(temp);
+				/* In case the digital value is two or one digits print space in the next digit place*/
+				LCD_displayCharacter(' ');
+			}
+			DcMotor_Rotate(CW,75);
+		}
+
+
+	}
+}
+
+
+/*
+ * if(temp >= 100)
+				{
+				LCD_moveCursor(1,8);
+					LCD_intgerToString(temp);
+				}
+				else
+				{
+				LCD_moveCursor(1,8);
+					LCD_intgerToString(temp);
+					/* In case the digital value is two or one digits print space in the next digit place
+					LCD_displayCharacter(' ');
+				}
+		    }*/

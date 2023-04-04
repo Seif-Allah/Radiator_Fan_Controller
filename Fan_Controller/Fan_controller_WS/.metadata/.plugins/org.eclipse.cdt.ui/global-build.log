@@ -1,0 +1,63 @@
+22:27:48 **** Incremental Build of configuration Debug for project Fan_Controller_System ****
+make all 
+Building file: ../MCAL/adc.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"MCAL/adc.d" -MT"MCAL/adc.o" -c -o "MCAL/adc.o" "../MCAL/adc.c"
+Finished building: ../MCAL/adc.c
+ 
+Building file: ../MCAL/gpio.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"MCAL/gpio.d" -MT"MCAL/gpio.o" -c -o "MCAL/gpio.o" "../MCAL/gpio.c"
+Finished building: ../MCAL/gpio.c
+ 
+Building file: ../MCAL/pwm.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"MCAL/pwm.d" -MT"MCAL/pwm.o" -c -o "MCAL/pwm.o" "../MCAL/pwm.c"
+Finished building: ../MCAL/pwm.c
+ 
+Building file: ../HAL/lcd.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"HAL/lcd.d" -MT"HAL/lcd.o" -c -o "HAL/lcd.o" "../HAL/lcd.c"
+In file included from ../HAL/lcd.c:13:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../HAL/lcd.c
+ 
+Building file: ../HAL/lm35_sensor.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"HAL/lm35_sensor.d" -MT"HAL/lm35_sensor.o" -c -o "HAL/lm35_sensor.o" "../HAL/lm35_sensor.c"
+Finished building: ../HAL/lm35_sensor.c
+ 
+Building file: ../HAL/motor.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"HAL/motor.d" -MT"HAL/motor.o" -c -o "HAL/motor.o" "../HAL/motor.c"
+Finished building: ../HAL/motor.c
+ 
+Building file: ../APP/app.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"APP/app.d" -MT"APP/app.o" -c -o "APP/app.o" "../APP/app.c"
+Finished building: ../APP/app.c
+ 
+Building target: Fan_Controller_System.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Fan_Controller_System.map -mmcu=atmega32 -o "Fan_Controller_System.elf"  ./MCAL/adc.o ./MCAL/gpio.o ./MCAL/pwm.o  ./HAL/lcd.o ./HAL/lm35_sensor.o ./HAL/motor.o  ./APP/app.o   
+Finished building target: Fan_Controller_System.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Fan_Controller_System.elf  >"Fan_Controller_System.lss"
+Finished building: Fan_Controller_System.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Fan_Controller_System.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    9548 bytes (29.1% Full)
+(.text + .data + .bootloader)
+
+Data:        294 bytes (14.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 

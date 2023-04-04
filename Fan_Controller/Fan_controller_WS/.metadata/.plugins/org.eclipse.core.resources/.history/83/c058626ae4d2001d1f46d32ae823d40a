@@ -1,0 +1,14 @@
+/*
+ * pwm.h
+ *
+ *  Created on: Apr 4, 2023
+ *      Author: a
+ */
+
+#ifndef PWM_H_
+#define PWM_H_
+
+void PWM_Timer0_Start(uint8 duty_cycle);
+
+
+#endif /* PWM_H_ */

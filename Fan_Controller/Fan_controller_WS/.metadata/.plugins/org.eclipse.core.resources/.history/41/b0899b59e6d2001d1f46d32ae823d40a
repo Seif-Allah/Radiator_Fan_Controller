@@ -1,0 +1,5 @@
+#include"gpio.h"
+
+void DcMotor_Init(void){
+	GPIO_setupPinDirection(PORT, uint8 pin_num, GPIO_PinDirectionType direction)
+}
